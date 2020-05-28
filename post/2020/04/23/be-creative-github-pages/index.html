@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160114482-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-160114482-1');
+</script>
+
+
+<link rel='manifest' href='/manifest.json'>
+
+<script>
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("An active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("/sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+</script>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+<meta property="twitter:title" content="Be Creative with GitHub Pages | Eas">
+<meta property="og:title" content="Be Creative with GitHub Pages | Eas">
+<meta name="title" content="Be Creative with GitHub Pages | Eas">
+
+
+
+<meta property="twitter:description" content="If you started your development journey, you might want to have your own website. Good thing is, GitHub Pages is there for you!">
+<meta property="og:description" content="If you started your development journey, you might want to have your own website. Good thing is, GitHub Pages is there for you!">
+<meta name="description" content="If you started your development journey, you might want to have your own website. Good thing is, GitHub Pages is there for you!">
+
+
+
+<meta property="og:url" content="https://eas.web.id/post/2020/04/23/be-creative-github-pages/">
+<meta property="twitter:url" content="https://eas.web.id/post/2020/04/23/be-creative-github-pages/">
+
+
+
+    <meta property="og:image" content="https://eas.web.id/assets/img/site/header/blog.jpg">
+    <meta property="twitter:image" content="https://eas.web.id/assets/img/site/header/blog.jpg">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<!-- PWA -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png?v=2bB2EYnraw">
+<link rel="manifest" href="/assets/favicons/site.webmanifest?v=2bB2EYnraw">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg?v=2bB2EYnraw" color="#333333">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico?v=2bB2EYnraw">
+<meta name="apple-mobile-web-app-title" content="Eas">
+<meta name="application-name" content="Eas">
+<meta name="msapplication-TileColor" content="#333333">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml?v=2bB2EYnraw">
+<meta name="theme-color" content="#ffffff">
+
+  
+  <title>Be Creative with GitHub Pages | Eas</title>
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/./dist/docs.272bcfe3a5d8ac82653f.css">
+
+<style>
+
+header .simpleParallax {
+    
+    max-height: 70vh;
+    
+}
+
+
+header,
+header #content {
+    
+    max-height: 70vh;
+    
+}
+
+header div#content {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: absolute;
+    top: 0;
+
+    
+    background-image: linear-gradient( rgba(0,0,0,1), rgba(0,0,0,0.5));
+    
+}
+</style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+  <div x-data="{ onTop: true }">
+<nav class="w-screen h-16 fixed z-50 transition-colors duration-200"
+    @scroll.window="onTop = (window.pageYOffset > 50) ? false : true">
+    <!-- Desktop -->
+    <div class="hidden lg:block transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+<div class="container mx-auto">
+    <div class="grid grid-cols-5">
+        <div class="mx-0 w-16">
+            <a href="/"
+                class="grid w-16 items-center h-16 py-2">
+                <div class="h-full"
+                    :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+                    style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+                    mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+                    mask-position: center; -webkit-mask-position: center;">
+                </div>
+            </a>
+        </div>
+        <div class="col-span-4 flex flex-row justify-end items-center"
+        :class="{ 'text-white' : onTop, 'text-black' : !onTop }">
+            
+            <div>
+                <a href="/" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Home</a>
+            </div>
+            
+            <div>
+                <a href="/blog" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Blog</a>
+            </div>
+            
+            <div>
+                <a href="/about" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">About Me</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+    <!-- Mobile -->
+    <div class="lg:hidden grid grid-cols-1 transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+    <div class="mx-auto w-16 col-span-1">
+        <a href="/" class="grid grid-cols-1 w-16 items-center text-white h-16 py-2">
+            <div class="h-full bg-contain bg-center bg-no-repeat"
+            :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+            style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+            mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+            mask-position: center; -webkit-mask-position: center;">
+            </div>
+        </a>
+    </div>
+    <div class="md:text-right col-span-1">
+        <div class="w-screen px-8">
+            <div id="left" class="text-sm text-center py-2">
+                
+                <a href="/"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Home</a>
+                
+                <a href="/blog"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Blog</a>
+                
+                <a href="/about"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">About Me</a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+</div>
+
+  <header class="text-white  ">
+    <img id="background" class="parallax" src="https://eas.web.id/assets/img/site/header/blog.jpg">
+    <div id="content"
+        class="flex flex-col justify-center w-full  h-full py-32 ">
+        <div class="container flex flex-col mx-auto justify-center w-screen text-white pt-16">
+            <span class="py-6">
+                <h1 class="text-4xl lg:text-6xl mb-2"  align="center"
+                    >Be Creative with GitHub Pages
+                </h1>
+                <h2 class="text-xl lg:text-2xl mb-4"  align="center"
+                    >
+                    If you started your development journey, you might want to have your own website. Good thing is, GitHub Pages is there for you!
+                </h2>
+                <h3 class="text-xl lg:text-2xl mb-4"  align="center"
+                    ></h3>
+                
+                
+                
+                <h6 class="text-xs tracking-widest" align="center">23 Apr 2020 | 8+
+                    minutes read</h3>
+                    
+            </span>
+            
+
+            
+        </div>
+    </div>
+</header>
+
+  <main id="article" role="main">
+    <div class="container">
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <p>Ever since I’ve been struggling to create blog with PHP (WordPress/Laravel in that matter), finally I found a solution. I scraped the whole idea of my blog project, and switch to <a href="https://pages.github.com">GitHub Pages</a>. The hiccup is, GitHub Pages uses <a href="https://jekyllrb.com">Jekyll</a>, and PHP doesn’t work there. Thankfully, it’s easy to learn and build.</p>
+
+<h2 id="in-this-post">In this post…</h2>
+
+<p>I’ll walk you through the steps required to build your own blog using Jekyll and GitHub Pages, such as:</p>
+<ul>
+  <li>Knowing the language used for building blog on GitHub Pages,</li>
+  <li>Building your GitHub Pages on a repository,</li>
+  <li>Making your first post, and</li>
+  <li>Building and testing your GitHub Pages locally (optional).</li>
+</ul>
+
+<p>But first, make sure you have the following:</p>
+<ul>
+  <li>Your GitHub account. <a href="https://github.com/join">Create one now</a> if you don’t have – don’t worry, I’ll wait,</li>
+  <li><a href="https://git-scm.com/">Git</a>. This will clone repository, and push/pull commits in your project,</li>
+  <li>Your favorite code editor (if you want to customize even more – I recommend using <a href="https://code.visualstudio.com">Visual Studio Code</a>), and</li>
+  <li>Your time.</li>
+</ul>
+
+<h2 id="what-is-jekyll">What is Jekyll?</h2>
+
+<p>Jekyll is a site generator that compiles web files you’ve made, into a static page. Its minimal and static behavior make your blog faster to load than most popular CMS out there, such as Joomla! and WordPress.</p>
+
+<h2 id="why-jekyll">Why Jekyll?</h2>
+
+<p>I’ll describe in 3 words: <strong>fast</strong>, <strong>secure</strong>, and <strong>minimal</strong>.</p>
+
+<p><strong>Fast</strong>, because your site only consists of static pages. No dynamic contents, as Jekyll processed your posts and pages into static form. 1 point for Jekyll.</p>
+
+<p><strong>Secure</strong>, because of the static pages. There are no dynamic contents, no authentications required, less points of failure. Another point for Jekyll.</p>
+
+<p><strong>Minimal</strong>, because… minimal. No server pre-processors like PHP, and you only need HTML, CSS, and JavaScript to create a page. After that, let Jekyll do the thing. Not to mention that you can optionally use Liquid tags to create dynamic-like pages, like mine. Another win for Jekyll.</p>
+
+<p>So, without further ado, let’s create!</p>
+
+<h2 id="okay-what-should-i-do-first">Okay… what should I do first?</h2>
+
+<p>The first thing to do is to create your repository first. Make sure that it has the format of <code class="language-plaintext highlighter-rouge">&lt;yourusername&gt;.github.io</code>, where <code class="language-plaintext highlighter-rouge">&lt;yourusername&gt;</code> is your GitHub username.</p>
+
+<p>Once that’s done, click on Create new file above the empty repository list you’ve just created, as shown at the image below.</p>
+
+<p><img src="/assets/img/uploads/20200421-step1-githubpages.jpg" alt="Create a new file on GitHub repository" title="Create new file" /></p>
+
+<p>Go ahead and make any HTML tags you want.</p>
+
+<p>After that, name the file as <strong>index.html</strong> (as it’s the default file to be looked up first) and commit the change at the bottom of the page.</p>
+
+<p><img src="/assets/img/uploads/20200421-step2-githubpages.jpg" alt="Commit change" title="Commit change" /></p>
+
+<p>And it should be something like this:</p>
+
+<p><img src="/assets/img/uploads/20200421-step3-githubpages.jpg" alt="New file created" title="New file created" /></p>
+
+<p>Now go to Settings, and on GitHub Pages section, select <code class="language-plaintext highlighter-rouge">master branch</code> on the Source options.</p>
+
+<p><img src="/assets/img/uploads/20200421-step4-githubpages.jpg" alt="Select master branch on Source options" title="Select master branch on Source options" /></p>
+
+<p>The settings are automatically saved, so you only need to wait for approximately 1-2 minutes. Once that’s done, go ahead to your newly created website on <code class="language-plaintext highlighter-rouge">&lt;yourusername&gt;.github.io</code> to see your changes.</p>
+
+<h2 id="yay-my-first-page-whats-next">Yay! My first page! What’s next?</h2>
+
+<p>Nice! Now that you have your first page, it’s time to take the creativity to the next level. Grab your favorite code editor, and clone your git repository!</p>
+
+<p>Go to your repository page, and click on <strong>Clone or Download ZIP</strong>. From there, copy the URL shown on the pop-up, and do <code class="language-plaintext highlighter-rouge">git clone &lt;your-copied-url&gt;</code>.</p>
+
+<p><strong>PRO TIP:</strong> If you want to do <code class="language-plaintext highlighter-rouge">git</code> activities to your repository without being asked for password every time you do <code class="language-plaintext highlighter-rouge">git</code>, use SSH. I’ll cover about this in the future article.</p>
+
+<p>But hold your horses! We need to also prepare things on local PC. Otherwise, your site can’t be tested locally.</p>
+
+<p>The first things you need to prepare are:</p>
+<ul>
+  <li>Ruby+Devkit 2.5.0 or above (2.6.x is recommended as of this article),</li>
+  <li><code class="language-plaintext highlighter-rouge">ridk install</code> after Ruby+Devkit is installed, and</li>
+  <li>Bundler and Jekyll itself through <code class="language-plaintext highlighter-rouge">gem install jekyll bundler</code>.</li>
+</ul>
+
+<p><a href="https://jekyllrb.com/docs/installation/">Head over to Jekyll installation page</a> as it has already covered the steps required, depending on what platform you use. After that, go back here. I’ll wait.</p>
+
+<p>Now that the installation is complete, you can check if Jekyll runs properly by going to your cloned repo folder, and then do <code class="language-plaintext highlighter-rouge">jekyll serve</code>.</p>
+
+<h2 id="i-want-to-expand-my-site-what-to-do">I want to expand my site! What to do?</h2>
+
+<p>If you want to expand your site to accomodate other features like portfolio, blog, and so on, you need to know how Jekyll works. Commonly, Jekyll has default structure like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- /_includes
+- /_layouts
+- /_posts
+|-- /_drafts
+- /_site
+- _config.yml
+</code></pre></div></div>
+
+<p>Here, let me explain one by one:</p>
+<ul>
+  <li>Starting with <code class="language-plaintext highlighter-rouge">_config.yml</code> file. This file consists of the configurations necessary to run your site. If you want to put additional settings in your site (like adding Google Analytics), or if you want to update specific settings, you can put everything in this file.</li>
+  <li>Onto <code class="language-plaintext highlighter-rouge">/_includes</code> folder. This folder consists of a piece of HTML/JS/CSS code that you use. Think of it as modules, or partials. And then, you can include the file using <code class="language-plaintext highlighter-rouge">{% include &lt;yourfile&gt; %}</code> in your HTML layout file, which I’ll explain shortly.</li>
+  <li><code class="language-plaintext highlighter-rouge">/_layouts</code> folder, just like its name, consists of layouts for specific type of pages in your site. This will make you can go creative with how your site works. For example, you want to make your portfolio and blog site have different layouts. You can make 2 separate files <code class="language-plaintext highlighter-rouge">portfolio.html</code> and <code class="language-plaintext highlighter-rouge">blog.html</code> in <code class="language-plaintext highlighter-rouge">/_layouts</code> folder. Then, you can assign its layout on the main page’s Front Matter with <code class="language-plaintext highlighter-rouge">layout: &lt;layout_name&gt;</code>.</li>
+  <li>On <code class="language-plaintext highlighter-rouge">/_posts</code> folder (and <code class="language-plaintext highlighter-rouge">/_drafts</code> subfolder), is the core of blog posting. You can assign the post title, category, and tags there for each post you make. Since the parameters are using the same Front Matter, you can also customize your posts to add functionality into each of your posts.</li>
+  <li>And last but not least, the <code class="language-plaintext highlighter-rouge">/_site</code> folder. This is where Jekyll puts the compiled posts and/or pages you make. Don’t do edits here, though.</li>
+</ul>
+
+<h2 id="wait-a-second-what-is-front-matter">Wait a second… what is Front Matter?</h2>
+
+<p>Some of my points above mentioned about Front Matter. If you want to know about Front Matter, think of it as individual classes. Each class has its own properties to make it behave properly.</p>
+
+<p>The same goes for YAML’s Front Matter (or YFM, for short). The thing is, YFM acts as metadata for your pages and posts. When you put some data on YFM, Jekyll will process the data, which will be used for other components while compiling your pages and posts.</p>
+
+<p>YFM takes a form like this at the top of your page or post file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">some</span><span class="pi">:</span> <span class="s">data</span>
+<span class="na">other</span><span class="pi">:</span> <span class="s">data</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p><a href="https://jekyllrb.com/docs/front-matter/">There are some predefined global variables</a> that you can use, but you’re free to define everything in the Front Matter. If you put something inside the Front Matter, you can call its values or use it as an expression in Liquid Tags, like so:</p>
+
+<p>Put the values like this…<br /><code class="language-plaintext highlighter-rouge">{{ page.variable }}</code></p>
+
+<p>…or use as an expression…<br /><code class="language-plaintext highlighter-rouge">{% if page.variable == true %}</code></p>
+
+<h2 id="whoa-so-cool">Whoa… so cool!</h2>
+
+<p>Now that you have learned the basics, it’s time to practice on it! 😊</p>
+
+<p>Oh, I forgot to add something. If you have done creating pages, you’ll likely want to see the compiled output. To see it locally, follow these steps:</p>
+<ul>
+  <li>Open the command prompt (or Terminal if you use *nix-based operating systems).</li>
+  <li>Go to your project folder through command prompt.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">jekyll serve</code> command.</li>
+</ul>
+
+<p>If you don’t see any errors during <code class="language-plaintext highlighter-rouge">jekyll serve</code>, you can go straight to <code class="language-plaintext highlighter-rouge">127.0.0.1:4000</code> to see your site in preview. If you’re satisfied with the change, you can commit the changes by typing <code class="language-plaintext highlighter-rouge">git add &lt;changed-file&gt;</code> (or <code class="language-plaintext highlighter-rouge">git add .</code> to stage all files) on the command prompt. Then, commit changes by typing <code class="language-plaintext highlighter-rouge">git commit -m "your message"</code>.</p>
+
+<p>Once that’s done, you can push your changes by typing <code class="language-plaintext highlighter-rouge">git push</code> command.</p>
+
+<p>Congratulations! Your site is now updated! 🎉</p>
+
+<h2 id="yay-whats-next">Yay! What’s next?</h2>
+
+<p>Now, relax… while you’re learning the basics I explained above. On the next part, I will explain how to:</p>
+<ul>
+  <li>Use NPM to add advanced CSS and JS functionality,</li>
+  <li>Make your own custom styling based on Tailwind CSS (my favorite utility-first CSS framework), and</li>
+  <li>Use PostCSS to purge unused CSS stylings to reduce the file size.</li>
+</ul>
+
+<p>If you have any questions, you can comment down below.</p>
+
+<p>Happy creating things!</p>
+
+
+        
+
+        <hr class="w-8 h-1 bg-gray-400 mt-8 mx-auto">
+      </div>
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <div class="flex flex-col items-center md:flex-row">
+          <img id="about" class="h-16 w-16 md:h-24 md:w-24 rounded-full md:mr-6" src="/assets/img/photo.jpg"
+            alt="My Face :)">
+          <div class="text-center md:text-left">
+            <h4 class="text-xl">Hi, I'm Eas!</h4>
+            <p class="text-gray-800">I'm a self-taught web developer, who loves to learn new things web. My aim is to
+              make a good, open-source web platform that everyone can use.</p>
+            <p class="text-gray-800">If my posts are useful for you, you can consider <a href="https://ko-fi.com/easterneas">buying me a coffee</a>, and I will happily appreciate it. :)</p>
+            <div>
+              
+              <a href="https://fb.me/Eas.EasyAndSimple/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-700 transition-colors text-xl">
+                <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/easterneas/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-600 transition-colors text-xl">
+                <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+              </a>
+              
+              <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ"
+                class="inline-block mr-2 text-gray-600 hover:text-red-600 transition-colors text-xl">
+                <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+        
+        
+        <!-- Related posts -->
+        <!-- https://blog.webjeda.com/jekyll-related-posts/#whats-wrong-with-jekyll-related_posts- -->
+        <!-- with slight modifications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+
+          
+          <h4 class="text-center text-xl sm:text-2xl col-span-1 md:col-span-2 lg:col-span-4">
+            I think you'll enjoy this
+          </h4>
+          
+          
+          
+          <div>
+            <a href="/post/2020/04/28/extending-your-github-pages/">
+              <div class="bg-gray-200 rounded-lg hover:bg-gray-400">
+                
+                <div class="bg-contain bg-center bg-no-repeat w-full h-64"
+                  style="background-image: url(/assets/img/svg/logo.svg)">
+                </div>
+                
+                <div class="p-4">
+                  <h3 class="text-2xl mb-4">Extending Your GitHub Pages</h3>
+                  <p>Now that you have your own GitHub Pages site, it's time for you to extend your site features.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="pt-8" id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = https://eas.web.id/post/2020/04/23/be-creative-github-pages/;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://eas-3.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    
+  </main>
+
+  
+<div class="h-auto bg-gray-400">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-0 md:gap-4 py-8 md:text-xl">
+            <div class="text-left col-span-2">
+                <span class="inline-block font-bold px-4 py-2">
+                    Want to support me?
+                </span>
+            </div>
+            <div class="text-right">
+                <a href="/buy-me-coffee" class="inline-block px-4 py-2 border border-gray-900 bg-white shadow hover:shadow-xl transition-shadow duration-100">
+                    I'd love to!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="h-auto py-8 md:py-12 lg:py-16 bg-black text-white text-sm">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:gap-8">
+            <!-- Upper Footer -->
+            <div class="my-2 md:my-0">
+                <span class="block text-base">Site Menu</span>
+                <ul>
+                    
+                    <li>
+                        <a href="/" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/blog" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Blog
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            About Me
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <span class="block text-base">Let's Social!</span>
+                
+                    <a href="https://fb.me/Eas.EasyAndSimple/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+                    </a>
+                
+                    <a href="https://www.linkedin.com/in/easterneas/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+                    </a>
+                
+                    <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+                    </a>
+                
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <h2 class="text-xl">About Me</h2>
+                <span class="block">I'm a self-taught web developer who loves to learn new things tech.</span>
+                <span class="block">I also like to experiment things.</span>
+            </div>
+            <!-- End: Upper Footer -->
+            
+            <!-- Lower Footer -->
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <div class="my-0 md:mb-2 md:mt-4 h-16 w-16 bg-contain bg-left bg-no-repeat"
+                    style="background-image: url(/assets/img/svg/logo.svg);">
+                </div>
+                <span class="block">Copyright &copy; 2019-2020</span>
+                <span class="block">Hosted on <a href="https://pages.github.com">GitHub Pages</a>. Made with ♥ by <a href="https://github.com/easterneas">me</a> :)</span>
+            </div>
+            <!-- End: Lower Footer -->
+        </div>
+    </div>
+</footer>
+
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.2.0/dist/simpleParallax.min.js"></script>
+
+<script>
+var parallax = document.querySelectorAll('.parallax');
+
+new simpleParallax(parallax);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+	"lang": "en",
+	"dir": "ltr",
+	"name": "Eas",
+	"short_name": "Eas",
+	"description": "The home of the self-taught web developer. Loves to learn new things.",
+	"scope": "/",
+	"icons": [
+		{
+			"src": "/assets/favicons/favicon.ico?v=2bB2EYnraw",
+			"sizes": "48x48"
+		},
+		{
+			"src": "/assets/favicons/mstile-150x150.png?v=2bB2EYnraw",
+			"sizes": "270x270"
+		},
+		{
+			"src": "/assets/favicons/apple-touch-icon.png?v=2bB2EYnraw",
+			"sizes": "180x180"
+		},
+		{
+			"src": "/assets/favicons/favicon-32x32.png?v=2bB2EYnraw",
+			"sizes": "32x32"
+		},
+		{
+			"src": "/assets/favicons/favicon-16x16.png?v=2bB2EYnraw",
+			"sizes": "16x16"
+		}
+	],
+	"start_url": "./?utm_source=pwa",
+	"display": "standalone",
+	"orientation": "natural",
+	"theme_color": "#ffffff",
+	"background_color": "#333333",
+	"related_applications": [],
+	"prefer_related_applications": false,
+	"url": "https://eas.web.id",
+	"screenshots": [],
+	"generated": "true"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eas</title>
+    <description>The home of the self-taught web developer. Loves to learn new things.</description>
+    <link>https://eas.web.id/</link>
+    <atom:link href="https://eas.web.id/feeds/fb.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 28 May 2020 16:49:52 +0700</pubDate>
+    <lastBuildDate>Thu, 28 May 2020 16:49:52 +0700</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+    
+      <item>
+        <title>After 2 weeks of vacuum, and a few days of learning JavaScript, this is what I learned so far.</title>
+        <pubDate>Sun, 24 May 2020 00:00:00 +0700</pubDate>
+        <link>https://eas.web.id/post/2020/05/24/JS-Apps/</link>
+        <guid isPermaLink="true">https://eas.web.id/post/2020/05/24/JS-Apps/</guid>
+      </item>
+    
+  </channel>
+</rss>

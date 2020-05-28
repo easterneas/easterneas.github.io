@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160114482-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-160114482-1');
+</script>
+
+
+<link rel='manifest' href='/manifest.json'>
+
+<script>
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("An active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("/sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+</script>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+<meta property="twitter:title" content="Extending Your GitHub Pages | Eas">
+<meta property="og:title" content="Extending Your GitHub Pages | Eas">
+<meta name="title" content="Extending Your GitHub Pages | Eas">
+
+
+
+<meta property="twitter:description" content="Now that you have your own GitHub Pages site, it's time for you to extend your site features.">
+<meta property="og:description" content="Now that you have your own GitHub Pages site, it's time for you to extend your site features.">
+<meta name="description" content="Now that you have your own GitHub Pages site, it's time for you to extend your site features.">
+
+
+
+<meta property="og:url" content="https://eas.web.id/post/2020/04/28/extending-your-github-pages/">
+<meta property="twitter:url" content="https://eas.web.id/post/2020/04/28/extending-your-github-pages/">
+
+
+
+    <meta property="og:image" content="https://eas.web.id/assets/img/site/header/blog.jpg">
+    <meta property="twitter:image" content="https://eas.web.id/assets/img/site/header/blog.jpg">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<!-- PWA -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png?v=2bB2EYnraw">
+<link rel="manifest" href="/assets/favicons/site.webmanifest?v=2bB2EYnraw">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg?v=2bB2EYnraw" color="#333333">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico?v=2bB2EYnraw">
+<meta name="apple-mobile-web-app-title" content="Eas">
+<meta name="application-name" content="Eas">
+<meta name="msapplication-TileColor" content="#333333">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml?v=2bB2EYnraw">
+<meta name="theme-color" content="#ffffff">
+
+  
+  <title>Extending Your GitHub Pages | Eas</title>
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/./dist/docs.272bcfe3a5d8ac82653f.css">
+
+<style>
+
+header .simpleParallax {
+    
+    max-height: 70vh;
+    
+}
+
+
+header,
+header #content {
+    
+    max-height: 70vh;
+    
+}
+
+header div#content {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: absolute;
+    top: 0;
+
+    
+    background-image: linear-gradient( rgba(0,0,0,1), rgba(0,0,0,0.5));
+    
+}
+</style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+  <div x-data="{ onTop: true }">
+<nav class="w-screen h-16 fixed z-50 transition-colors duration-200"
+    @scroll.window="onTop = (window.pageYOffset > 50) ? false : true">
+    <!-- Desktop -->
+    <div class="hidden lg:block transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+<div class="container mx-auto">
+    <div class="grid grid-cols-5">
+        <div class="mx-0 w-16">
+            <a href="/"
+                class="grid w-16 items-center h-16 py-2">
+                <div class="h-full"
+                    :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+                    style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+                    mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+                    mask-position: center; -webkit-mask-position: center;">
+                </div>
+            </a>
+        </div>
+        <div class="col-span-4 flex flex-row justify-end items-center"
+        :class="{ 'text-white' : onTop, 'text-black' : !onTop }">
+            
+            <div>
+                <a href="/" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Home</a>
+            </div>
+            
+            <div>
+                <a href="/blog" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Blog</a>
+            </div>
+            
+            <div>
+                <a href="/about" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">About Me</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+    <!-- Mobile -->
+    <div class="lg:hidden grid grid-cols-1 transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+    <div class="mx-auto w-16 col-span-1">
+        <a href="/" class="grid grid-cols-1 w-16 items-center text-white h-16 py-2">
+            <div class="h-full bg-contain bg-center bg-no-repeat"
+            :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+            style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+            mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+            mask-position: center; -webkit-mask-position: center;">
+            </div>
+        </a>
+    </div>
+    <div class="md:text-right col-span-1">
+        <div class="w-screen px-8">
+            <div id="left" class="text-sm text-center py-2">
+                
+                <a href="/"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Home</a>
+                
+                <a href="/blog"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Blog</a>
+                
+                <a href="/about"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">About Me</a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+</div>
+
+  <header class="text-white  ">
+    <img id="background" class="parallax" src="https://eas.web.id/assets/img/site/header/blog.jpg">
+    <div id="content"
+        class="flex flex-col justify-center w-full  h-full py-32 ">
+        <div class="container flex flex-col mx-auto justify-center w-screen text-white pt-16">
+            <span class="py-6">
+                <h1 class="text-4xl lg:text-6xl mb-2"  align="center"
+                    >Extending Your GitHub Pages
+                </h1>
+                <h2 class="text-xl lg:text-2xl mb-4"  align="center"
+                    >
+                    Now that you have your own GitHub Pages site, it's time for you to extend your site features.
+                </h2>
+                <h3 class="text-xl lg:text-2xl mb-4"  align="center"
+                    ></h3>
+                
+                
+                
+                <h6 class="text-xs tracking-widest" align="center">28 Apr 2020 | 12+
+                    minutes read</h3>
+                    
+            </span>
+            
+
+            
+        </div>
+    </div>
+</header>
+
+  <main id="article" role="main">
+    <div class="container">
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <p>In the last post, you have learned <a href="/post/2020/04/23/be-creative-github-pages/">how to create your site with GitHub Pages</a>. Also, you also have learned how to prepare your site for further customization locally on the same post. Now, you will learn how to extending your site features on GitHub Pages.</p>
+
+<h2 id="in-this-post">In this post..</h2>
+
+<p>I’ll walk you through the more advanced steps on how to extending your Jekyll-based site on GitHub Pages, such as:</p>
+<ul>
+  <li>Using NPM to add advanced CSS and JS functionality,</li>
+  <li>Configuring Webpack for compiling CSS and JS,</li>
+  <li>Making your own custom styling using Tailwind CSS, and</li>
+  <li>Using PostCSS to purge unused CSS stylings to reduce file size.</li>
+</ul>
+
+<p>Most of this post, is inspired by <a href="https://blog.frankdejonge.nl/setting-up-docs-with-tailwind-css-and-github-pages/">the post made by Frank de Jonge</a> – yup, I made my own site based on his tutorials, too. But I’ll try to get down to basics, so you may be able to make your customization easy and simple enough.</p>
+
+<p>So, without further ado, let’s jump in!</p>
+
+<h2 id="but-first">But first…</h2>
+
+<p>I didn’t explain further about <code class="language-plaintext highlighter-rouge">_config.yml</code> file in my last post. But, I think it is a good time to explain this file first.</p>
+
+<p>As I said in my last post, <code class="language-plaintext highlighter-rouge">_config.yml</code> consists of the site’s main configurations needed for your site to run properly. Also, you can put additional site settings within this file to extend your site features, much like what we will do in this post. Even so, your site can still run without <code class="language-plaintext highlighter-rouge">_config.yml</code> file, though it will run based on <a href="https://jekyllrb.com/docs/configuration/default/">default Jekyll configuration on this documentation</a>.</p>
+
+<p>In order to customize your site, you need to create an empty <code class="language-plaintext highlighter-rouge">_config.yml</code> to override your site default settings. To keep it easy and simple, let’s just populate the configuration file with the following:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># I use the following first config to define my site, like</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">&lt;Your site title&gt;</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">&lt;Your site description&gt;</span>
+<span class="na">google_analytics</span><span class="pi">:</span> <span class="c1"># only use this if you use Analytics from Google</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="c1"># only for posts: use this to override default Jekyll's post permalink</span>
+<span class="na">timezone</span><span class="pi">:</span> <span class="s">&lt;Your timezone&gt;</span>
+
+<span class="c1"># use default layout for all pages</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">default"</span>
+
+<span class="c1"># exclude source and non-essential files and folders</span>
+<span class="na">exclude</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">*.config.js"</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">package*.js"</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">node_modules"</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">src"</span>
+</code></pre></div></div>
+
+<p>Since we populated <code class="language-plaintext highlighter-rouge">_config.yml</code>, if you are still running <code class="language-plaintext highlighter-rouge">jekyll serve</code>, you need to restart it to use the configuration settings. Otherwise, Jekyll won’t use the created <code class="language-plaintext highlighter-rouge">_config.yml</code> file.</p>
+
+<p>Now the configuration file is prepared, it’s time to jump right in!</p>
+
+<h2 id="so-what-is-npm">So what is NPM?</h2>
+
+<p>NPM (Node Package Manager) is the package manager that manages everything JavaScript. It is widely used in Node.js environment, but NPM also can be used on other non-JS based sites, too (like this one).</p>
+
+<p>Before we can install packages, we need to download NPM first. Since NPM is bundled with Node JS, we can just <a href="https://nodejs.org/en/">download from Node site</a>, and just use default settings during installation.</p>
+
+<p>Once that’s done, you can check <code class="language-plaintext highlighter-rouge">node -v</code> and <code class="language-plaintext highlighter-rouge">npm -v</code> to see if Node and NPM are installed properly.</p>
+
+<h2 id="now-npm-is-installed-what-to-do-next">Now NPM is installed, what to do next?</h2>
+
+<p>The next thing you need to do, is to install packages and their dependencies. To do this, you need to make a file named <code class="language-plaintext highlighter-rouge">package.json</code> (the NPM’s required file), and fill with this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">private:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The code above is to specify whether the project is private or open-source. If it’s true, then npm will refuse to publish the project.</p>
+
+<p>Then, install the following packages:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> autoprefixer <span class="se">\</span>
+                       clean-webpack-plugin <span class="se">\</span>
+                       css-loader <span class="se">\</span>
+                       cssnano <span class="se">\</span>
+                       mini-css-extract-plugin <span class="se">\</span>
+                       postcss <span class="se">\</span>
+                       postcss-loader <span class="se">\</span>
+                       postcss-nested <span class="se">\</span>
+                       @fullhuman/postcss-purgecss <span class="se">\</span>
+                       style-loader <span class="se">\</span>
+                       tailwindcss <span class="se">\</span>
+                       webpack <span class="se">\</span>
+                       webpack-cli <span class="se">\</span>
+                       webpack-manifest-plugin
+</code></pre></div></div>
+
+<p>Note: If <code class="language-plaintext highlighter-rouge">\</code> didn’t work, make it to just one line.</p>
+
+<p>Once that’s done, now it’s time to configure the webpack.</p>
+
+<h2 id="what-is-webpack">What is webpack?</h2>
+
+<p>On <a href="https://webpack.js.org/concepts/">their documentation</a>, webpack is a static module bundler for modern JavaScript applications. When webpack runs, it will create the dependency graph internally, which maps every single module and project needed, and generates one or more bundles.</p>
+
+<p>At this time, you might be confused with how it works, so let’s just jump into the code to see how it works. I’ll explain on how they work later on.</p>
+
+<h3 id="create-webpackconfigjs-file">Create <code class="language-plaintext highlighter-rouge">webpack.config.js</code> file</h3>
+
+<p>Create a file named <code class="language-plaintext highlighter-rouge">webpack.config.js</code>, and copy the following code:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>  
+<span class="kd">const</span> <span class="nx">MiniCssExtractPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mini-css-extract-plugin</span><span class="dl">'</span><span class="p">);</span>  
+<span class="kd">const</span> <span class="nx">ManifestPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">webpack-manifest-plugin</span><span class="dl">'</span><span class="p">);</span>  
+<span class="kd">const</span> <span class="nx">isProduction</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span><span class="p">;</span>  
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">CleanWebpackPlugin</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">clean-webpack-plugin</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>  
+    <span class="na">mode</span><span class="p">:</span> <span class="nx">isProduction</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">development</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">docs</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./assets/index.css</span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./dist/</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="nx">isProduction</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">[name].[hash].js</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">[name].js</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">chunkFilename</span><span class="p">:</span> <span class="nx">isProduction</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">[id].[hash].js</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">[id].js</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="na">loader</span><span class="p">:</span> <span class="nx">MiniCssExtractPlugin</span><span class="p">.</span><span class="nx">loader</span><span class="p">,</span>
+                        <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="na">hmr</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">development</span><span class="dl">'</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">},</span>
+                    <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">postcss-loader</span><span class="dl">'</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(),</span>
+        <span class="k">new</span> <span class="nx">MiniCssExtractPlugin</span><span class="p">({</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="nx">isProduction</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">[name].[hash].css</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">[name].css</span><span class="dl">'</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">ManifestPlugin</span><span class="p">({</span>
+            <span class="na">fileName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">../_data/manifest.yml</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">publicPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./dist/</span><span class="dl">'</span><span class="p">,</span>
+            <span class="c1">// site.data.manifest['key']</span>
+        <span class="p">}),</span>
+    <span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>These code above will compile the CSS and JS we will create later on, and store them inside <code class="language-plaintext highlighter-rouge">/dist</code> folder.</p>
+
+<h3 id="initialize-tailwindconfigjs-file">Initialize <code class="language-plaintext highlighter-rouge">tailwind.config.js</code> file</h3>
+
+<p>After that, create Tailwind CSS init file by using <code class="language-plaintext highlighter-rouge">npx tailwind init</code> (notice that it’s <code class="language-plaintext highlighter-rouge">npx</code>, not <code class="language-plaintext highlighter-rouge">npm</code>). This will create the base Tailwind CSS configuration file named <code class="language-plaintext highlighter-rouge">tailwind.config.js</code>, that we can use for further customization, if you want.</p>
+
+<h3 id="configure-postcssconfigjs-file">Configure <code class="language-plaintext highlighter-rouge">postcss.config.js</code> file</h3>
+
+<p>Next, is to prepare the PostCSS configuration file called <code class="language-plaintext highlighter-rouge">postcss.config.js</code>, and copy contents below.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">purgecss</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@fullhuman/postcss-purgecss</span><span class="dl">'</span><span class="p">)({</span>  
+    <span class="na">content</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// Jekyll output directory</span>
+        <span class="dl">'</span><span class="s1">./_site/**/*.html</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="na">defaultExtractor</span><span class="p">:</span> <span class="nx">content</span> <span class="o">=&gt;</span> <span class="nx">content</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/</span><span class="se">[\w</span><span class="sr">-</span><span class="se">/</span><span class="sr">:</span><span class="se">]</span><span class="sr">+</span><span class="se">(?&lt;</span><span class="sr">!:</span><span class="se">)</span><span class="sr">/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[],</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>  
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">tailwindcss</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cssnano</span><span class="dl">'</span><span class="p">)(),</span>
+        <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">autoprefixer</span><span class="dl">'</span><span class="p">),</span>
+        <span class="p">...</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span>
+            <span class="p">?</span> <span class="p">[</span><span class="nx">purgecss</span><span class="p">]</span>
+            <span class="p">:</span> <span class="p">[]</span>
+    <span class="p">]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="so-how-do-they-work">So, how do they work?</h3>
+
+<p>Now, let me explain one by one. The <code class="language-plaintext highlighter-rouge">webpack.config.js</code> file consists of routines needed for compiling fhe CSS and JS files. First, it defines the base path, the environment from <code class="language-plaintext highlighter-rouge">npm run</code>, and then obtains <code class="language-plaintext highlighter-rouge">mini-css-extract</code>, <code class="language-plaintext highlighter-rouge">clean-webpack</code>, and <code class="language-plaintext highlighter-rouge">webpack-manifest</code> plugins. Then, it runs its main routine, which is in <code class="language-plaintext highlighter-rouge">module.exports</code>, that finds the <code class="language-plaintext highlighter-rouge">index.css</code> file in <code class="language-plaintext highlighter-rouge">/assets</code> directory, compiles it, and outputs 2 separate CSS and JS file in <code class="language-plaintext highlighter-rouge">/dist</code> directory as <code class="language-plaintext highlighter-rouge">docs.css</code> and <code class="language-plaintext highlighter-rouge">docs.js</code>. If you use <code class="language-plaintext highlighter-rouge">npm run prod</code>, it will add hashes into the compiled name.</p>
+
+<p>The second one is the <code class="language-plaintext highlighter-rouge">tailwind.config.js</code> file. This file is mainly used for Tailwind CSS configuration file. You can customize it by customizing screen width size, its font family, or you can even add Tailwind-specific plugins in it. <a href="https://tailwindcss.com/docs/configuration">Read the complete documentation</a> for more detailed information.</p>
+
+<p>Last but not least, the <code class="language-plaintext highlighter-rouge">postcss.config.js</code> file. This configuration file is used to delete unused CSS styling by looking for used styling in each of compiled Jekyll sites. This is useful, especially on production sites, as it will reduce the file size considerably.</p>
+
+<h2 id="great-whats-the-next-step">Great! What’s the next step?</h2>
+
+<p>Now that the files are setup correctly, it’s time to test it out. Create <code class="language-plaintext highlighter-rouge">index.css</code> file in <code class="language-plaintext highlighter-rouge">/assets</code> directory, and add this:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@tailwind</span> <span class="n">base</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="nt">your</span> <span class="nt">custom</span> <span class="nt">base</span> <span class="nt">styles</span> <span class="nt">here</span>
+
+<span class="k">@tailwind</span> <span class="n">components</span><span class="p">;</span>
+
+<span class="k">@tailwind</span> <span class="n">utilities</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><a href="https://tailwindcss.com/docs/adding-base-styles/">Tailwind sugests</a> that you to put your custom base styles right in between of Tailwind’s base and components, to avoid specificity issues.</p>
+
+<p>Before we go ahead and run <code class="language-plaintext highlighter-rouge">npm run dev</code> to begin compiling file, we have to update the <code class="language-plaintext highlighter-rouge">package.json</code> file. Sure, you may run <code class="language-plaintext highlighter-rouge">npm run dev</code>, but chances are, that you might get an error where there is no such script like <code class="language-plaintext highlighter-rouge">dev</code> when doing <code class="language-plaintext highlighter-rouge">npm run</code>. To avoid this, add the following:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">private...</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"prod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=production npx webpack"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=development npx webpack"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=development npx webpack --watch"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">devDependencies...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="bg-orange-300 text-orange-700 rounded-md p-4 mb-4 flex flex-row content-center">
+  <div class="mr-2">
+    <ion-icon name="alert-circle-outline" class="text-2xl"></ion-icon>
+  </div>
+  <div>
+    If you are using Windows, chances are, that you might encounter problems when you try to run <code>npm run</code> (either <code>npm run dev</code>, <code>npm run watch</code>, or <code>npm run prod</code>). If this happens, you need to install additional package called <code>cross-env</code> by doing <code>npm install -g cross-env</code>, and then add <code>cross-env</code> right before <code>NODE_ENV</code> on each script above.
+  </div>
+</div>
+
+<p>Now, try <code class="language-plaintext highlighter-rouge">npm run dev</code> on the command prompt (or terminal, if you use *nix platforms). It should run properly.</p>
+
+<h2 id="speaking-of-tailwind-css-customization">Speaking of Tailwind CSS customization…</h2>
+
+<p>If you notice the instructions I gave above, there was a step where you need to input some code inside <code class="language-plaintext highlighter-rouge">index.css</code> file. And if you look closer, there was a line where I put <code class="language-plaintext highlighter-rouge">// your custom base styles here</code>, which is where you can put your custom base settings. For complete documentation for how to use their components, head out to <a href="https://tailwindcss.com/components">Tailwind CSS documentation</a>.</p>
+
+<p>You may ignore this if you want to define Tailwind CSS classes directly to each of HTML element in your site. But, if you want to make more consistent layout, I suggest you to use it according to your needs.</p>
+
+<p>For example, you want a <code class="language-plaintext highlighter-rouge">.btn</code> class to have a light red button, slightly rounded border, and dark red text. You can achieve this by using the following:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.btn</span> <span class="p">{</span>
+  <span class="err">@apply</span> <span class="err">bg-red-300</span> <span class="err">text-red-800;</span>
+  <span class="err">@apply</span> <span class="err">rounded;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You may notice that I use 2 <code class="language-plaintext highlighter-rouge">@apply</code> directives. I made this to group according to their functions (e.g. <code class="language-plaintext highlighter-rouge">bg-red-300</code> and <code class="language-plaintext highlighter-rouge">text-red-800</code> are in colors group). It’s optional, though, but I won’t recommend you to cramp everything into just one line.</p>
+
+<h2 id="finally-css-purging">Finally, CSS purging!</h2>
+
+<p>The final step of your site theming is to purge unused CSS classes. This is useful after you’ve done developing your site layout (like I do here), as it will reduce unused CSS classes (like I said before) to a reasonable file size. This will make your site loads faster.</p>
+
+<p>I assume you have done styling your site, so let’s jump right into it. On your command prompt (or terminal), run this command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run prod
+</code></pre></div></div>
+
+<p>This command will do <code class="language-plaintext highlighter-rouge">prod</code> script inside <code class="language-plaintext highlighter-rouge">package.json</code> file, much like what you do with <code class="language-plaintext highlighter-rouge">npm run dev</code> at prior steps above. Then, after it’s done, you can commit and push your changes to GitHub. Wait for up to 2 minutes for GitHub Pages to process your changes.</p>
+
+<p>And after that, it’s finished!</p>
+
+<h2 id="yay-my-github-pages-site">Yay! My GitHub Pages site!</h2>
+
+<p>Now that you’ve done the steps from deploying your first page into GitHub Pages on my last post, and also customizing your site within my post here. It’s time for you to go crazy with your site, and let your journey begin as a developer!</p>
+
+<p>Have fun!</p>
+
+
+        
+
+        <hr class="w-8 h-1 bg-gray-400 mt-8 mx-auto">
+      </div>
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <div class="flex flex-col items-center md:flex-row">
+          <img id="about" class="h-16 w-16 md:h-24 md:w-24 rounded-full md:mr-6" src="/assets/img/photo.jpg"
+            alt="My Face :)">
+          <div class="text-center md:text-left">
+            <h4 class="text-xl">Hi, I'm Eas!</h4>
+            <p class="text-gray-800">I'm a self-taught web developer, who loves to learn new things web. My aim is to
+              make a good, open-source web platform that everyone can use.</p>
+            <p class="text-gray-800">If my posts are useful for you, you can consider <a href="https://ko-fi.com/easterneas">buying me a coffee</a>, and I will happily appreciate it. :)</p>
+            <div>
+              
+              <a href="https://fb.me/Eas.EasyAndSimple/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-700 transition-colors text-xl">
+                <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/easterneas/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-600 transition-colors text-xl">
+                <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+              </a>
+              
+              <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ"
+                class="inline-block mr-2 text-gray-600 hover:text-red-600 transition-colors text-xl">
+                <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+        
+        
+        <!-- Related posts -->
+        <!-- https://blog.webjeda.com/jekyll-related-posts/#whats-wrong-with-jekyll-related_posts- -->
+        <!-- with slight modifications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+
+          
+          <h4 class="text-center text-xl sm:text-2xl col-span-1 md:col-span-2 lg:col-span-4">
+            I think you'll enjoy this
+          </h4>
+          
+          
+          
+          <div>
+            <a href="/post/2020/04/23/be-creative-github-pages/">
+              <div class="bg-gray-200 rounded-lg hover:bg-gray-400">
+                
+                <div class="bg-contain bg-center bg-no-repeat w-full h-64"
+                  style="background-image: url(/assets/img/svg/logo.svg)">
+                </div>
+                
+                <div class="p-4">
+                  <h3 class="text-2xl mb-4">Be Creative with GitHub Pages</h3>
+                  <p>If you started your development journey, you might want to have your own website. Good thing is, GitHub Pages is there for you!</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="pt-8" id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = https://eas.web.id/post/2020/04/28/extending-your-github-pages/;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://eas-3.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    
+  </main>
+
+  
+<div class="h-auto bg-gray-400">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-0 md:gap-4 py-8 md:text-xl">
+            <div class="text-left col-span-2">
+                <span class="inline-block font-bold px-4 py-2">
+                    Want to support me?
+                </span>
+            </div>
+            <div class="text-right">
+                <a href="/buy-me-coffee" class="inline-block px-4 py-2 border border-gray-900 bg-white shadow hover:shadow-xl transition-shadow duration-100">
+                    I'd love to!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="h-auto py-8 md:py-12 lg:py-16 bg-black text-white text-sm">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:gap-8">
+            <!-- Upper Footer -->
+            <div class="my-2 md:my-0">
+                <span class="block text-base">Site Menu</span>
+                <ul>
+                    
+                    <li>
+                        <a href="/" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/blog" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Blog
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            About Me
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <span class="block text-base">Let's Social!</span>
+                
+                    <a href="https://fb.me/Eas.EasyAndSimple/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+                    </a>
+                
+                    <a href="https://www.linkedin.com/in/easterneas/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+                    </a>
+                
+                    <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+                    </a>
+                
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <h2 class="text-xl">About Me</h2>
+                <span class="block">I'm a self-taught web developer who loves to learn new things tech.</span>
+                <span class="block">I also like to experiment things.</span>
+            </div>
+            <!-- End: Upper Footer -->
+            
+            <!-- Lower Footer -->
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <div class="my-0 md:mb-2 md:mt-4 h-16 w-16 bg-contain bg-left bg-no-repeat"
+                    style="background-image: url(/assets/img/svg/logo.svg);">
+                </div>
+                <span class="block">Copyright &copy; 2019-2020</span>
+                <span class="block">Hosted on <a href="https://pages.github.com">GitHub Pages</a>. Made with ♥ by <a href="https://github.com/easterneas">me</a> :)</span>
+            </div>
+            <!-- End: Lower Footer -->
+        </div>
+    </div>
+</footer>
+
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.2.0/dist/simpleParallax.min.js"></script>
+
+<script>
+var parallax = document.querySelectorAll('.parallax');
+
+new simpleParallax(parallax);
+</script>
+</body>
+
+</html>

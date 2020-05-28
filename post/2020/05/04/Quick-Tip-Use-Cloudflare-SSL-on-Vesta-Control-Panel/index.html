@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160114482-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-160114482-1');
+</script>
+
+
+<link rel='manifest' href='/manifest.json'>
+
+<script>
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("An active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("/sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+</script>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+<meta property="twitter:title" content="Quick Tip: Use Cloudflare SSL on Vesta Control Panel | Eas">
+<meta property="og:title" content="Quick Tip: Use Cloudflare SSL on Vesta Control Panel | Eas">
+<meta name="title" content="Quick Tip: Use Cloudflare SSL on Vesta Control Panel | Eas">
+
+
+
+<meta property="twitter:description" content="It pains me when every time I tried to access Vesta Control Panel on my server, the browser always threw me an invalid/self-signed SSL error.">
+<meta property="og:description" content="It pains me when every time I tried to access Vesta Control Panel on my server, the browser always threw me an invalid/self-signed SSL error.">
+<meta name="description" content="It pains me when every time I tried to access Vesta Control Panel on my server, the browser always threw me an invalid/self-signed SSL error.">
+
+
+
+<meta property="og:url" content="https://eas.web.id/post/2020/05/04/Quick-Tip-Use-Cloudflare-SSL-on-Vesta-Control-Panel/">
+<meta property="twitter:url" content="https://eas.web.id/post/2020/05/04/Quick-Tip-Use-Cloudflare-SSL-on-Vesta-Control-Panel/">
+
+
+
+    <meta property="og:image" content="https://eas.web.id/assets/img/site/header/padlock.jpg">
+    <meta property="twitter:image" content="https://eas.web.id/assets/img/site/header/padlock.jpg">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<!-- PWA -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v=2bB2EYnraw">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png?v=2bB2EYnraw">
+<link rel="manifest" href="/assets/favicons/site.webmanifest?v=2bB2EYnraw">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg?v=2bB2EYnraw" color="#333333">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico?v=2bB2EYnraw">
+<meta name="apple-mobile-web-app-title" content="Eas">
+<meta name="application-name" content="Eas">
+<meta name="msapplication-TileColor" content="#333333">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml?v=2bB2EYnraw">
+<meta name="theme-color" content="#ffffff">
+
+  
+  <title>Quick Tip: Use Cloudflare SSL on Vesta Control Panel | Eas</title>
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/./dist/docs.272bcfe3a5d8ac82653f.css">
+
+<style>
+
+header .simpleParallax {
+    
+    max-height: 70vh;
+    
+}
+
+
+header,
+header #content {
+    
+    max-height: 70vh;
+    
+}
+
+header div#content {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: absolute;
+    top: 0;
+
+    
+    background-image: linear-gradient( rgba(0,0,0,1), rgba(0,0,0,0.5));
+    
+}
+</style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+  <div x-data="{ onTop: true }">
+<nav class="w-screen h-16 fixed z-50 transition-colors duration-200"
+    @scroll.window="onTop = (window.pageYOffset > 50) ? false : true">
+    <!-- Desktop -->
+    <div class="hidden lg:block transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+<div class="container mx-auto">
+    <div class="grid grid-cols-5">
+        <div class="mx-0 w-16">
+            <a href="/"
+                class="grid w-16 items-center h-16 py-2">
+                <div class="h-full"
+                    :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+                    style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+                    mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+                    mask-position: center; -webkit-mask-position: center;">
+                </div>
+            </a>
+        </div>
+        <div class="col-span-4 flex flex-row justify-end items-center"
+        :class="{ 'text-white' : onTop, 'text-black' : !onTop }">
+            
+            <div>
+                <a href="/" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Home</a>
+            </div>
+            
+            <div>
+                <a href="/blog" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">Blog</a>
+            </div>
+            
+            <div>
+                <a href="/about" class="block hover:text-gray-500 p-2 ml-4 "
+                :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                style="">About Me</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+    <!-- Mobile -->
+    <div class="lg:hidden grid grid-cols-1 transition-colors duration-200"
+:class="{ 'bg-white shadow-md text-black' : !onTop, 'bg-transparent text-white' : onTop }">
+    <div class="mx-auto w-16 col-span-1">
+        <a href="/" class="grid grid-cols-1 w-16 items-center text-white h-16 py-2">
+            <div class="h-full bg-contain bg-center bg-no-repeat"
+            :class="{ 'bg-white': onTop, 'bg-black': !onTop }"
+            style="mask-image: url(/assets/img/svg/logo.svg); -webkit-mask-image: url(/assets/img/svg/logo.svg);
+            mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+            mask-position: center; -webkit-mask-position: center;">
+            </div>
+        </a>
+    </div>
+    <div class="md:text-right col-span-1">
+        <div class="w-screen px-8">
+            <div id="left" class="text-sm text-center py-2">
+                
+                <a href="/"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Home</a>
+                
+                <a href="/blog"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">Blog</a>
+                
+                <a href="/about"
+                    class="inline-block p-2 hover:text-gray-500 "
+                    :class="{ 'text-white': onTop, 'text-black': !onTop }"
+                    style="">About Me</a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+</div>
+
+  <header class="text-white  ">
+    <img id="background" class="parallax" src="https://eas.web.id/assets/img/site/header/padlock.jpg">
+    <div id="content"
+        class="flex flex-col justify-center w-full  h-full py-32 ">
+        <div class="container flex flex-col mx-auto justify-center w-screen text-white pt-16">
+            <span class="py-6">
+                <h1 class="text-4xl lg:text-6xl mb-2"  align="center"
+                    >Quick Tip: Use Cloudflare SSL on Vesta Control Panel
+                </h1>
+                <h2 class="text-xl lg:text-2xl mb-4"  align="center"
+                    >
+                    It pains me when every time I tried to access Vesta Control Panel on my server, the browser always threw me an invalid/self-signed SSL error.
+                </h2>
+                <h3 class="text-xl lg:text-2xl mb-4"  align="center"
+                    ></h3>
+                
+                
+                
+                <h6 class="text-xs tracking-widest" align="center">04 May 2020 | 2+
+                    minutes read</h3>
+                    
+            </span>
+            
+
+            
+        </div>
+    </div>
+</header>
+
+  <main id="article" role="main">
+    <div class="container">
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <p>As I wrote this article, I was currently setting up my server on <a href="https://m.do.co/c/c1d659edcd3f">DigitalOcean</a> with <a href="https://vestacp.com/">Vesta Control Panel</a> for managing sites inside my server. Every time I had to go to the control panel, the browser threw out invalid/self-signed SSL error – which, I had to click on “Proceed to site (not recommended)”.</p>
+
+<p>Luckily, I use Cloudflare as my DNS management service, so managing SSL is quite easier. And in this Quick Tip, I’ll show you how to use Cloudflare’s SSL for your Vesta Control Panel. I assumed that you have:</p>
+<ul>
+  <li>Already setup your VPS (if not, register through the link above – that will support me, too!);</li>
+  <li>Registered your domain on Cloudflare; and</li>
+  <li>Setup Vesta Control Panel on your VPS.</li>
+</ul>
+
+<p>So, without further ado, let’s jump into it!</p>
+
+<h2 id="how-to-change-default-vesta-control-panel-port">How to change default Vesta Control Panel port</h2>
+
+<p>First, make sure that your DNS used for Vesta Control Panel is already proxied (that is, the cloud with orange color). This will make sure that Cloudflare’s SSL can be properly implemented.</p>
+
+<p>Then, if you didn’t enable Cloudflare SSL feature just yet, you have to go to SSL page to enable it. And on the Overview section, set your SSL/TLS encryption to Full.</p>
+
+<p>Since <a href="https://forum.vestacp.com/viewtopic.php?t=16847#p72024">Cloudflare doesn’t work nicely with Vesta’s default port (8083)</a>, you need to go to your VPS via SSH, and do this:</p>
+
+<pre><code class="language-ssh">sudo nano /usr/local/vesta/nginx/conf/nginx.conf
+</code></pre>
+
+<p>You can use Vim, of course.</p>
+
+<p>Then, find the following:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...other configs
+
+# Vhost
+server {
+  listen 8083;
+  ...
+}
+
+...other configs
+</code></pre></div></div>
+<p>and change it to other, like port 2020, for example, as long as the port isn’t used by other applications/services in your server. Save it.</p>
+
+<p>Since you have changed Vesta Control Panel configuration settings, you need to restart the service. Do this in your SSH terminal:</p>
+
+<pre><code class="language-ssh">sudo service vesta restart
+</code></pre>
+
+<p>or…</p>
+
+<pre><code class="language-ssh">sudo systemctl restart vesta.service
+</code></pre>
+
+<h2 id="test-it-out">Test it out!</h2>
+
+<p>Now that you’ve updated Vesta Control Panel default port, you might want to test it. Go to Vesta Control Panel on your server to see if Cloudflare’s SSL kicks in. If it does, then that’s it! You’ve successfully set up SSL on Vesta Control Panel using Cloudflare’s SSL.</p>
+
+
+        
+        
+        <span class="uppercase text-xs tracking-widest text-gray-600">Header photo by <a href="https://unsplash.com/markusspiske">Markus Spiske</a> on Unsplash</span>
+        
+
+        <hr class="w-8 h-1 bg-gray-400 mt-8 mx-auto">
+      </div>
+
+      <div class="w-full md:w-3/4 mx-auto mb-8">
+        <div class="flex flex-col items-center md:flex-row">
+          <img id="about" class="h-16 w-16 md:h-24 md:w-24 rounded-full md:mr-6" src="/assets/img/photo.jpg"
+            alt="My Face :)">
+          <div class="text-center md:text-left">
+            <h4 class="text-xl">Hi, I'm Eas!</h4>
+            <p class="text-gray-800">I'm a self-taught web developer, who loves to learn new things web. My aim is to
+              make a good, open-source web platform that everyone can use.</p>
+            <p class="text-gray-800">If my posts are useful for you, you can consider <a href="https://ko-fi.com/easterneas">buying me a coffee</a>, and I will happily appreciate it. :)</p>
+            <div>
+              
+              <a href="https://fb.me/Eas.EasyAndSimple/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-700 transition-colors text-xl">
+                <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/easterneas/"
+                class="inline-block mr-2 text-gray-600 hover:text-blue-600 transition-colors text-xl">
+                <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+              </a>
+              
+              <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ"
+                class="inline-block mr-2 text-gray-600 hover:text-red-600 transition-colors text-xl">
+                <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+        
+        
+        <!-- Related posts -->
+        <!-- https://blog.webjeda.com/jekyll-related-posts/#whats-wrong-with-jekyll-related_posts- -->
+        <!-- with slight modifications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="pt-8" id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = https://eas.web.id/post/2020/05/04/Quick-Tip-Use-Cloudflare-SSL-on-Vesta-Control-Panel/;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://eas-3.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    
+  </main>
+
+  
+<div class="h-auto bg-gray-400">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-0 md:gap-4 py-8 md:text-xl">
+            <div class="text-left col-span-2">
+                <span class="inline-block font-bold px-4 py-2">
+                    Want to support me?
+                </span>
+            </div>
+            <div class="text-right">
+                <a href="/buy-me-coffee" class="inline-block px-4 py-2 border border-gray-900 bg-white shadow hover:shadow-xl transition-shadow duration-100">
+                    I'd love to!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="h-auto py-8 md:py-12 lg:py-16 bg-black text-white text-sm">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:gap-8">
+            <!-- Upper Footer -->
+            <div class="my-2 md:my-0">
+                <span class="block text-base">Site Menu</span>
+                <ul>
+                    
+                    <li>
+                        <a href="/" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/blog" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            Blog
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about" class="text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                            About Me
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <span class="block text-base">Let's Social!</span>
+                
+                    <a href="https://fb.me/Eas.EasyAndSimple/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-facebook" title="Facebook"></ion-icon>
+                    </a>
+                
+                    <a href="https://www.linkedin.com/in/easterneas/" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-linkedin" title="LinkedIn"></ion-icon>
+                    </a>
+                
+                    <a href="https://youtube.com/channel/UCwW62q1NEy-jq2_RkjegoAQ" class="inline-block mr-2 text-gray-600 hover:text-gray-300 transition-colors duration-200 ease-in-out text-2xl">
+                        <ion-icon name="logo-youtube" title="YouTube"></ion-icon>
+                    </a>
+                
+            </div>
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <h2 class="text-xl">About Me</h2>
+                <span class="block">I'm a self-taught web developer who loves to learn new things tech.</span>
+                <span class="block">I also like to experiment things.</span>
+            </div>
+            <!-- End: Upper Footer -->
+            
+            <!-- Lower Footer -->
+            <div class="my-2 md:my-0 md:col-span-1 lg:col-span-2">
+                <div class="my-0 md:mb-2 md:mt-4 h-16 w-16 bg-contain bg-left bg-no-repeat"
+                    style="background-image: url(/assets/img/svg/logo.svg);">
+                </div>
+                <span class="block">Copyright &copy; 2019-2020</span>
+                <span class="block">Hosted on <a href="https://pages.github.com">GitHub Pages</a>. Made with ♥ by <a href="https://github.com/easterneas">me</a> :)</span>
+            </div>
+            <!-- End: Lower Footer -->
+        </div>
+    </div>
+</footer>
+
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.2.0/dist/simpleParallax.min.js"></script>
+
+<script>
+var parallax = document.querySelectorAll('.parallax');
+
+new simpleParallax(parallax);
+</script>
+</body>
+
+</html>
